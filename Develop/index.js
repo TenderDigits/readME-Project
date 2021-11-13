@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require ('fs');
+const { createInflate } = require('zlib');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -91,13 +92,23 @@ const questions = [
     #Contact
     *GitHub :${github}
     *e-mail :${email}`;
-}
+    createNewFile (template, data);
+},
 
 // TODO: Create a function to write README file
-function writeToFile(template, data) {}
+    function (template, data) {
+        fs.writeFile(template, data, (err) => {
+            if (err) {
+                console.log(err);
+            }
+            console.log('Your README has been generated');
+        });
+    },
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    
+}
 
 // Function call to initialize app
 init();
