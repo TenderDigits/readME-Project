@@ -46,10 +46,55 @@ const questions = [
         choices: ['MIT License', 'GPL License', 'Apache License', 'GNU License', 'N/A'],
         validate: (value) => { if (value) {return true} else {return 'input needed to continue'}}
     },
-];
+    {
+        type: 'inpt',
+        message: 'Github username:',
+        type: 'github',
+        validate: (value) => { if (value) {return true} else {return 'input needed to continue'}}
+    },
+    {
+        type: 'inpt',
+        message: 'e-mail address:',
+        type: 'email',
+        validate: (value) => { if (value) {return true} else {return 'input needed to continue'}}
+    }
+]
+.then(({
+    title,
+    description,
+    installation,
+    usage,
+    contributors,
+    license,
+    github,
+    email
+})=>{
+    const template = `# ${title}
+    
+    *[Description](#Description)
+    *[Installtion](Installation)
+    *[Usage](Usage)
+    *[Contributors](Contributors)
+    *[License](License)
+    
+    #Description
+    ${description}
+    ##Installation{
+    ${installation}
+    ###Usage
+    ${usage}
+    ####Contributors
+    ${contributors}
+    #####License
+    ${license}
+    
+    #Contact
+    *GitHub :${github}
+    *e-mail :${email}`;
+}
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(template, data) {}
 
 // TODO: Create a function to initialize app
 function init() {}
