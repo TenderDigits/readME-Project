@@ -2,6 +2,7 @@
 const inquirer = require('inquirer');
 const fs = require ('fs');
 const { createInflate } = require('zlib');
+const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -41,10 +42,10 @@ const questions = [
     },
 
     {
-        type: 'inpt',
+        type: 'checkbox',
         message: 'What license did you use?',
         type: 'license',
-        choices: ['MIT License', 'GPL License', 'Apache License', 'GNU License', 'N/A'],
+        choices: ['ISC License', 'MIT License', 'GPL License', 'Apache License', 'GNU License', 'N/A'],
         validate: (value) => { if (value) {return true} else {return 'input needed to continue'}}
     },
     {
@@ -92,7 +93,6 @@ const questions = [
     #Contact
     *GitHub :${github}
     *e-mail :${email}`;
-    createNewFile (template, data);
 },
 
 // TODO: Create a function to write README file
@@ -107,8 +107,11 @@ const questions = [
 
 // TODO: Create a function to initialize app
 function init() {
-    
-}
+    inquirer.prompt(questions)
+    .then(function(data) {
+        writeFile('README.md', generateMarkdown(data));
+    })
+});
 
 // Function call to initialize app
 init();
