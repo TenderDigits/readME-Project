@@ -60,28 +60,6 @@ const questions = [
         validate: (value) => { if (value) {return true} else {return 'input needed to continue'}}
     }
 ]
-// .then(({
-//     title,
-//     description,
-//     installation,
-//     usage,
-//     contributors,
-//     license,
-//     github,
-//     email
-// }) => {
-//     
-// },
-
-// // TODO: Create a function to write README file
-//     function (template, data) {
-//         fs.writeFile(template, data, (err) => {
-//                 if (err) {
-//                     console.log(err);
-//                 }
-//                 console.log('Your README has been generated');
-//             });
-//     },
 
 // TODO: Create a function to initialize app
 function init() {
